@@ -22,7 +22,11 @@ class Member implements AuthInterface
 
     public function auth(string $login, string $password): bool
     {
-        return $login === $this->login && $password === $this->password;
+        if (false === ($login === $this->login && $password === $this->password)) {
+            throw new \Exception('Authentication failed!');
+        }
+
+        return true;
     }
 
     public function __toString(): string

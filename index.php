@@ -16,8 +16,11 @@ function run(AuthInterface $user, array $argv): never
     $login = $argv[1];
     $password = $argv[2];
 
-    if ($user->auth($argv[1], $argv[2])) {
+    try {
+        $user->auth($argv[1], $argv[2]);
         echo $user;
+    } catch (\Exception) {
+        echo "Authentication failed.\n";
     }
 
     exit(0);
