@@ -1,6 +1,6 @@
 <?php
 
-class Vehicle
+abstract class Vehicle
 {
     public function __construct(
         protected readonly string $make,
@@ -11,11 +11,17 @@ class Vehicle
 
     public function start(): string
     {
-        return sprintf('Vroum! The %s %s %s starts', $this->make, $this->model, $this->type->getName());
+        if (null === $this->model || VehicleType::Vehicle === $this->type) {
+            throw new \InvalidArgumentException();
+        }
+
+        return $this->doStart();
     }
 
     public function setModel(string $model): void
     {
         $this->model = $model;
     }
+
+    abstract public function doStart(): string;
 }

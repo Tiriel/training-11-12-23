@@ -3,17 +3,24 @@
 require_once __DIR__.'/VehicleType.php';
 require_once __DIR__.'/Vehicle.php';
 require_once __DIR__.'/Car.php';
+require_once __DIR__.'/AuthInterface.php';
+require_once __DIR__.'/AdminLevel.php';
+require_once __DIR__.'/Member.php';
+require_once __DIR__.'/Admin.php';
 
-function run(): never
+
+$m1 = Admin::create('Bob', 'admin1234', 35, false);
+
+function run(AuthInterface $user, array $argv): never
 {
-    $car = new Car('Renault', 'R5');
+    $login = $argv[1];
+    $password = $argv[2];
 
-    $car2 = new Car('Citroën', 'Visa');
-
-    echo $car->start()."\n";
-    echo $car2->start()."\n";
+    if ($user->auth($argv[1], $argv[2])) {
+        echo $user;
+    }
 
     exit(0);
 }
 
-run();
+run($m1, $argv);

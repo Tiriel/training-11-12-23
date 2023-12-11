@@ -16,7 +16,7 @@ class Task
     public function setRecurringDay(string|DayOfWeek $recurringDay): void
     {
         if (is_string($recurringDay)) {
-            $recurringDay = DayOfWeek::tryFrom($recurringDay);
+            $recurringDay = DayOfWeek::from($recurringDay);
         }
         $this->recurringDay = $recurringDay;
     }

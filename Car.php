@@ -9,5 +9,10 @@ class Car extends Vehicle
     ) {
         parent::__construct($make, $model, $type);
     }
+
+    public function doStart(): string
+    {
+        return sprintf('Vroum! The %s %s %s starts', $this->make, $this->model, $this->type->getName());
+    }
 }
 
