@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Vehicle;
+
+use App\Vehicle\Enum\VehicleType;
+
 abstract class Vehicle
 {
     public function __construct(

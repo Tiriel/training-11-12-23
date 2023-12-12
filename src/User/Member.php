@@ -1,5 +1,9 @@
 <?php
 
+namespace App\User;
+
+use App\User\Interface\AuthInterface;
+
 class Member implements AuthInterface
 {
     protected static int $childCounter = 0;

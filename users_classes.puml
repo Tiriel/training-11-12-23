@@ -5,13 +5,13 @@ interface AuthInterface {
     + auth(login: string, password: string): bool
 }
 
-class Member implements AuthInterface {
+class Member {
     # login: string
     # password: string
     # age: int
 }
 
-class Admin extends Member {
+class Admin {
     # level: AdminLevel
 }
 
@@ -21,5 +21,7 @@ enum AdminLevel {
 }
 
 Admin::level --> AdminLevel
+AuthInterface <|.down. Member
+Admin -up-|> Member
 
 @enduml

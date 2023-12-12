@@ -1,13 +1,9 @@
 <?php
 
-require_once __DIR__.'/VehicleType.php';
-require_once __DIR__.'/Vehicle.php';
-require_once __DIR__.'/Car.php';
-require_once __DIR__.'/AuthInterface.php';
-require_once __DIR__.'/AdminLevel.php';
-require_once __DIR__.'/Member.php';
-require_once __DIR__.'/Admin.php';
+use App\User\Admin;
+use App\User\Interface\AuthInterface;
 
+require_once __DIR__.'/vendor/autoload.php';
 
 $m1 = Admin::create('Bob', 'admin1234', 35, false);
 
@@ -23,7 +19,6 @@ function run(AuthInterface $user, array $argv): never
         echo "Authentication failed.\n";
     }
 
-    var_dump(get_declared_classes());
     exit(0);
 }
 

@@ -1,5 +1,6 @@
 <?php
 
+namespace App;
 class Citizen
 {
     public function __construct(

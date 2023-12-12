@@ -1,5 +1,6 @@
 <?php
 
+namespace App;
 enum DayOfWeek: string
 {
     case Monday = 'monday';

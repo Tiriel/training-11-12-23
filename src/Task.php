@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Task
 {
     public function __construct(
