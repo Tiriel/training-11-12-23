@@ -23,6 +23,7 @@ function run(AuthInterface $user, array $argv): never
         echo "Authentication failed.\n";
     }
 
+    var_dump(get_declared_classes());
     exit(0);
 }
 
