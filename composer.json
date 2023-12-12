@@ -1,5 +1,5 @@
 {
-    "name": "benjamin/training-11-12-23",
+    "name": "ben/app",
     "type": "project",
     "license": "MIT",
     "autoload": {
@@ -13,5 +13,7 @@
             "email": "benjamin.zaslavsky@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-pdo": "*"
+    }
 }

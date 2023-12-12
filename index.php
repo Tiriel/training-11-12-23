@@ -1,15 +1,17 @@
 <?php
 
+use App\Controller;
+use App\Database\Connection;
+use App\Database\Persister;
+use App\Routing\Request;
+
 require_once __DIR__.'/vendor/autoload.php';
 
-$func = $argv[1];
-$file = __DIR__.'/bin/'.$func.'.php';
-if (!\file_exists($file)) {
-    printf("Function %s does not exist.\n", $func);
+$request = new Request();
+$persister = new Persister(Connection::getInstance());
+$controller = new Controller($persister);
 
-    exit(1);
-}
+$router = require __DIR__.'/routes.php';
+$router = $router($controller, $request);
 
-require_once $file;
-
-$func($argv);
+$router->handleRequest($request);
