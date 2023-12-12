@@ -31,11 +31,11 @@ class Admin extends Member
         return sprintf("Ce %s s'appelle %s et a %d ans\n", $this->level->getLabel(), $this->login, $this->age);
     }
 
-    public static function create(string $login, string $plainPassword, int $age, bool $superadmin): static
+    public static function create(string $login, string $plainPassword, int $age, bool $superadmin = false): static
     {
-        //$password = password_hash($plainPassword, PASSWORD_BCRYPT);
+        $password = password_hash($plainPassword, PASSWORD_BCRYPT);
         $level = $superadmin ? AdminLevel::SuperAdmin : AdminLevel::Admin;
 
-        return new static($login, $plainPassword, $age, $level);
+        return new static($login, $password, $age, $level);
     }
 }

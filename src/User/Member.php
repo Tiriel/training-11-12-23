@@ -26,7 +26,7 @@ class Member implements AuthInterface
 
     public function auth(string $login, string $password): bool
     {
-        if (false === ($login === $this->login && $password === $this->password)) {
+        if (false === ($login === $this->login && password_verify($password, $this->password))) {
             throw new \Exception('Authentication failed!');
         }
 
@@ -36,6 +36,13 @@ class Member implements AuthInterface
     public function __toString(): string
     {
         return sprintf("Ce membre s'appelle %s et a %d ans\n", $this->login, $this->age);
+    }
+
+    public static function create(string $login, string $plainPassword, int $age): static
+    {
+        $password = password_hash($plainPassword, PASSWORD_BCRYPT);
+
+        return new static($login, $password, $age);
     }
 
     public static function count(): int
