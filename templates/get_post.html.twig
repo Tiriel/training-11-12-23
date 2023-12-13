@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ post is not null ? post.title : 'Not found' }}{% endblock %}
+
+{% block body %}
+    {{ include('_post.html.twig') }}
+{% endblock %}
