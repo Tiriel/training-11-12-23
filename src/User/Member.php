@@ -29,6 +29,11 @@ class Member implements AuthInterface
         return $this->age;
     }
 
+    public function getLogin(): string
+    {
+        return $this->login;
+    }
+
     public function auth(string $login, string $password): bool
     {
         if (false === ($login === $this->login && password_verify($password, $this->password))) {

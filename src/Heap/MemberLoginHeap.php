@@ -11,10 +11,10 @@ class MemberLoginHeap extends MemberHeap
         assert($value1 instanceof Member);
         assert($value2 instanceof Member);
 
-        $getLogin = fn() => $this->login;
-        $login1 = $getLogin->call($value1);
-        $login2 = $getLogin->call($value2);
+        //$getLogin = fn() => $this->login;
+        //$login1 = $getLogin->call($value1);
+        //$login2 = $getLogin->call($value2);
 
-        return strcmp($login2, $login1);
+        return strcmp($value2->getLogin(), $value1->getLogin());
     }
 }
