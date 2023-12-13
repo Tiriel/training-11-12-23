@@ -1,0 +1,72 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Post {
+    - id: int
+    - title: string
+    - author: string
+    - content: string
+    - date: \DateTimeImmutable
+    + getId(): int
+    + getTitle(): string
+    + setTitle(title: string)
+    + getAuthor(): string
+    + setAuthor(title: string)
+    + getContent(): string
+    + setContent(title: string)
+    + getDate(): string
+    + setDate(title: string)
+}
+
+class PostMapper {
+    + map(data: array): Post
+}
+
+class Connection {
+    - connection: \PDO
+    + static getInstance(): self
+    + getPdo(): \PDO
+}
+
+class Repository {
+    - connection: Connection
+    - mapper: PostMapper
+    + insertPost(post: Post)
+    + getPost(id: int): Post
+    + getPosts(): array
+}
+
+class Controller {
+    - repository: Repository
+    + index()
+    + post()
+    + form()
+    + addPost()
+}
+
+class Request {
+    - method: string
+    - path: string
+    - query: array
+    - data: array
+    + getMethod(): string
+    + getPath(): string
+    + getQuery(): array
+    + getData(): array
+}
+
+class Router {
+    + addRoute()
+    + handleRequest(request: Request)
+}
+
+() index
+
+Repository::mapper --> PostMapper
+Repository::connection --> Connection
+Controller::repository <--> Repository
+Router::handleRequest --> Request
+Router --> Controller
+index --> Router
+
+@enduml
