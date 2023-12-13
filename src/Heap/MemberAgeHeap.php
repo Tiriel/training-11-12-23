@@ -15,10 +15,6 @@ class MemberAgeHeap extends MemberHeap
         //$age1 = $ref->getProperty('age')->getValue($value1);
         //$age2 = $ref->getProperty('age')->getValue($value2);
 
-        $getAge = fn() => $this->age;
-        $age1 = $getAge->call($value1);
-        $age2 = $getAge->call($value2);
-
-        return $age2 <=> $age1;
+        return $value2->getAge() <=> $value1->getAge();
     }
 }

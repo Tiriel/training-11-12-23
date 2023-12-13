@@ -9,6 +9,7 @@ class Car extends Vehicle
     public function __construct(
         string $make,
         ?string $model = null,
+        array $wheels = [],
         ?VehicleType $type = VehicleType::Car
     ) {
         parent::__construct($make, $model, $type);
