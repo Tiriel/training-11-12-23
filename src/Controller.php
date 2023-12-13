@@ -12,7 +12,7 @@ class Controller
 
     public function index(): void
     {
-        //
+        echo '<h1>Homepage</h1>';
     }
 
     public function post(): void

@@ -14,6 +14,10 @@ class Request
 
     public function __construct()
     {
+        $this->path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $this->method = $_SERVER['REQUEST_METHOD'];
+        $this->query = $_GET;
+        $this->data = $_POST;
     }
 
     public function getPath(): string

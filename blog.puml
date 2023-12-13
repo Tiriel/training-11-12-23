@@ -55,6 +55,7 @@ class Request {
 }
 
 class Router {
+    - routes: array
     + addRoute(method: string, path: string, handler: callable)
     + handleRequest(request: Request)
 }
