@@ -22,6 +22,6 @@ class Router
         }
 
         $handler = $this->routes[$method][$path];
-        $handler();
+        $handler($request);
     }
 }
